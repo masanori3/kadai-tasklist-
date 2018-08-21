@@ -1,0 +1,2 @@
+class Taskapp < ApplicationRecord
+end
