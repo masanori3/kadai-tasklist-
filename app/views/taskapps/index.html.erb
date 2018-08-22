@@ -1,0 +1,10 @@
+<h1>タスク一覧</h1>
+  
+<ul>
+  <% @taskapps.each do |taskapp|%>
+    <li><%= link_to taskapp.id, taskapp %> : <%= taskapp.content%></li>
+  <%end%>
+</ul>
+  
+  
+<%= link_to "新規タスクの追加", new_taskapp_path %>
