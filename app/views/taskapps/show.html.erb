@@ -1,7 +1,0 @@
-<h1>id: <%= @taskapp.id%>のタスク詳細ページ</h1>
-
-<p><%= @taskapp.content %></p>
-
-<%= link_to "一覧に戻る", taskapps_path%>
-<%= link_to "このタスクを編集する", edit_taskapp_path(@taskapp)%>
-<%= link_to "このタスクを削除する", @taskapp, method: :delete,data: { confirm: "本当に削除してよろしいですか？" } %>

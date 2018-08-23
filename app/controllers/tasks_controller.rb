@@ -1,21 +1,21 @@
-class TaskappsController < ApplicationController
+class TasksController < ApplicationController
   def index
-    @taskapps = Taskapp.all
+    @tasks = Task.all
   end
   
   def show
-    @taskapp = Taskapp.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def new
-    @taskapp = Taskapp.new
+    @task = Task.new
   end
 
   def create
-    @taskapp = Taskapp.new(taskapp_params)
-    if @taskapp.save
+    @task = Task.new(task_params)
+    if @task.save
       flash[:success] = "タスクが正常に保存されました。"
-      redirect_to @taskapp
+      redirect_to @task
     else
       flash.now[:danger] = "タスクが投稿されませんでした。"
       render :now
@@ -23,14 +23,14 @@ class TaskappsController < ApplicationController
   end
 
   def edit
-    @taskapp = Taskapp.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def update
-    @taskapp = Taskapp.find(params[:id])
-      if @taskapp.update(taskapp_params)
+    @task = Task.find(params[:id])
+      if @task.update(task_params)
         flash[:sucess] = "正常に更新されましたよ。"
-        redirect_to @taskapp
+        redirect_to @task
       else
         flash.now[:danger] = "更新されませんでした。"
         render :edit
@@ -38,17 +38,17 @@ class TaskappsController < ApplicationController
   end
 
   def destroy
-    @taskapp = Taskapp.find(params[:id])
-    @taskapp.destroy
+    @task = Task.find(params[:id])
+    @task.destroy
     
     flash[:success] = "タスクは削除されました。"
-    redirect_to taskapps_url
+    redirect_to tasks_url
   end
   
   private
   
-  def taskapp_params
-    params.require(:taskapp).permit(:content)
+  def task_params
+    params.require(:task).permit(:content)
   end
   
 end
